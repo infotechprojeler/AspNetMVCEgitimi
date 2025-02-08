@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMVCEgitimi.NetCoreMVC", "AspNetMVCEgitimi.NetCoreMVC\AspNetMVCEgitimi.NetCoreMVC.csproj", "{EB3EED39-F3BB-4D12-A0CE-27300070264D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFrameworkMVC", "NetFrameworkMVC\NetFrameworkMVC.csproj", "{BE58A6E4-DDD8-4C17-A9D3-9E9FFA6EC836}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB3EED39-F3BB-4D12-A0CE-27300070264D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB3EED39-F3BB-4D12-A0CE-27300070264D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB3EED39-F3BB-4D12-A0CE-27300070264D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB3EED39-F3BB-4D12-A0CE-27300070264D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE58A6E4-DDD8-4C17-A9D3-9E9FFA6EC836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE58A6E4-DDD8-4C17-A9D3-9E9FFA6EC836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE58A6E4-DDD8-4C17-A9D3-9E9FFA6EC836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE58A6E4-DDD8-4C17-A9D3-9E9FFA6EC836}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
