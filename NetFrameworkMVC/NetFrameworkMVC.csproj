@@ -121,9 +121,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MVC01RazorSyntaxController.cs" />
+    <Compile Include="Controllers\MVC02HtmlHelpersController.cs" />
+    <Compile Include="Controllers\MVC03DataTransferController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Urun.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,12 +150,44 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\114.png" />
+    <Content Include="Images\1200px-LampFlowchart_tr.svg.png" />
+    <Content Include="Images\af6ffced-1e0d-41c8-8c3f-e858edc6ea20.jfif" />
+    <Content Include="Images\angular_typescript_eigitimi_infotech_academy18.png" />
+    <Content Include="Images\aspnetcoemvc16.png" />
+    <Content Include="Images\bgVideo.jpg" />
+    <Content Include="Images\chatgpt-python-egitimi-infotech8.png" />
+    <Content Include="Images\e-ticaret-proje-gelistirme-egitimi-infotech-academy12.png" />
+    <Content Include="Images\fa0e57a2-a14c-4795-9071-6f950924bdea.jfif" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\google.png" />
+    <Content Include="Images\infotechacademyik.jpg" />
+    <Content Include="Images\infotechacademy_python_veribilimi_egitimi26.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logoInfotechAcademy.png" />
+    <Content Include="Images\mikroservisler_egitimi_infotech20.png" />
+    <Content Include="Images\net-core-eticaret-gelistirme-egitimi29.png" />
+    <Content Include="Images\programming-flowchart-even-odd-number.png" />
+    <Content Include="Images\react_native_kursu_egitimi_infotechacademy25.png" />
+    <Content Include="Images\register-257986_1280.jpg" />
+    <Content Include="Images\sistem_uzmanligi_egittimi.png" />
+    <Content Include="Images\slide-1.png" />
+    <Content Include="Images\slide-2.png" />
+    <Content Include="Images\slide-3.jpg" />
+    <Content Include="Images\slide-6.jpg" />
+    <Content Include="Images\sosyal_medya_uzmanligi_egitimi.png" />
+    <Content Include="Images\unsplash-photo-1.jpg" />
+    <Content Include="Images\unsplash-photo-2.jpg" />
+    <Content Include="Images\unsplash-photo-3.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Images\kayıtol.webp" />
+    <Content Include="Images\logo.webp" />
+    <Content Include="Images\slide1.webp" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -177,10 +213,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\MVC01RazorSyntax\Index.cshtml" />
+    <Content Include="Views\MVC02HtmlHelpers\Index.cshtml" />
+    <Content Include="Views\MVC03DataTransfer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

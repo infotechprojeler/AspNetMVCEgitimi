@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "MVC de View ve Controller Arasında Veri Gönderme";
+}
+
+<h1>MVC de Controller dan View a Veri Gönderme</h1>
+
+<h3>@ViewBag.UrunKategorisi Ürüneri</h3>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Ürün Adı</th>
+        <th>Ürün Fiyatı</th>
+        <th>Stok</th>
+    </tr>
+    @foreach (var item in ViewBag.Urunler)
+    {
+        <tr>
+            <td>@item.Adi</td>
+            <td>@item.Fiyati ₺</td>
+            <td>@item.Stok</td>
+        </tr>
+    }
+    <caption>
+        @TempData["UrunBilgi"]
+    </caption>
+</table>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Ürün Adı</th>
+        <th>Ürün Fiyatı</th>
+        <th>Stok</th>
+    </tr>
+    @foreach (var item in ViewData["Urunler"] as List<Urun>)
+    {
+        <tr>
+            <td>@item.Adi</td>
+            <td>@item.Fiyati ₺</td>
+            <td>@item.Stok</td>
+        </tr>
+    }
+    <caption>
+        @TempData["UrunBilgi"]
+    </caption>
+</table>
+
+<hr />
+
+<h2>MVC de View dan Controller a Veri Gönderme</h2>
+
+<h3>
+    1-Get Metoduyla Veri Gönderme
+</h3>
+
+<form action="/MVC03DataTransfer/Index" method="get">
+    <input type="text" name="txtAra" />
+    <button type="submit" class="btn btn-primary">Ara</button>
+</form>
+
+<p>
+    Bir formun metodunu get yapıp çalıştırırsak, form içindeki veriler QueryString denilen yöntemle Tarayıcı adres çubuğu üzerinden sunucuya gönderilir.
+    <hr />
+    Veriyi Viewdan GET metoduyla göndermişsek, Controller'da da GET metoduyla yakalayabiliriz!
+</p>
+
+<div class="alert alert-info">
+    @ViewBag.GetVerisi
+</div>
+
+<h3>
+    2-Post Metoduyla Veri Gönderme
+</h3>
+
+@{
+    var kategoriler = new List<SelectListItem>
+    {
+    new SelectListItem() { Text = "Bilgisayar", Value = "1" },
+    new SelectListItem() { Text = "Monitör" },
+    new SelectListItem() { Text = "Telefon", Value = "3" },
+    new SelectListItem() { Text = "Televizyon" },
+    new SelectListItem() { Text = "Tablet", Value = "5" }
+    };
+}
+
+<form action="/MVC03DataTransfer/Index" method="post">
+    <table class="table">
+        <tr>
+            <td>Ürün Adı</td>
+            <td>@Html.TextBox("txtUrunAdi")</td>
+        </tr>
+        <tr>
+            <td>Kategori</td>
+            <td>@Html.DropDownList("ddlKategori", kategoriler)</td>
+        </tr>
+        <tr>
+            <td>
+                Sözleşme
+            </td>
+            <td>
+                <label>
+                    @Html.RadioButton("rbOnay", "onay") Kabul Ediyorum
+                </label>
+                <label>
+                    @Html.RadioButton("rbOnay", "red") Kabul Etmiyorum
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>Durum</td>
+            <td>
+                @Html.CheckBox("cbOnay") <label for="cbOnay">Aktif</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Gönder" />
+            </td>
+        </tr>
+    </table>
+</form>
