@@ -1,7 +1,21 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Iletisim";
 }
 
 <h1>Iletisim</h1>
 
+<form action="/Home/Iletisim" method="post">
+    <table>
+        <tr>
+            <td>Adınız</td>
+            <td>
+                <input type="text" name="txtAd" value="" />
+            </td>
+            <td>Soyadınız</td>
+            <td>
+                <input type="text" name="txtSoyad" value="" />
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Gönder" />
+</form>

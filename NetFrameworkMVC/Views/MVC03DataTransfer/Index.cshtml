@@ -73,11 +73,82 @@
 
 @{
     var kategoriler = new List<SelectListItem>
-    {
-    new SelectListItem() { Text = "Bilgisayar", Value = "1" },
-    new SelectListItem() { Text = "Monitör" },
-    new SelectListItem() { Text = "Telefon", Value = "3" },
-    new SelectListItem() { Text = "Televizyon" },
-    new SelectListItem() { Text = "Tablet", Value = "5" }
+{
+        new SelectListItem() { Text = "Bilgisayar", Value = "1" },
+        new SelectListItem() { Text = "Monitör" },
+        new SelectListItem() { Text = "Telefon", Value = "3" },
+        new SelectListItem() { Text = "Televizyon" },
+        new SelectListItem() { Text = "Tablet", Value = "5" }
     };
 }
+
+<form action="/MVC03DataTransfer/Index" method="post">
+    <table class="table">
+        <tr>
+            <td>Ürün Adı</td>
+            <td>@Html.TextBox("txtUrunAdi")</td>
+        </tr>
+        <tr>
+            <td>Kategori</td>
+            <td>@Html.DropDownList("ddlKategori", kategoriler)</td>
+        </tr>
+        <tr>
+            <td>
+                Sözleşme
+            </td>
+            <td>
+                <label>
+                    @Html.RadioButton("rbOnay", "onay") Kabul Ediyorum
+                </label>
+                <label>
+                    @Html.RadioButton("rbOnay", "red") Kabul Etmiyorum
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>Durum</td>
+            <td>
+                @Html.CheckBox("cbOnay") <label for="cbOnay">Aktif</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Gönder" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+<hr />
+<div class="alert alert-info">
+    <h4>@ViewBag.Baslik1</h4>
+    <br />
+    @ViewBag.Mesaj1
+    <br />
+    @ViewBag.Mesaj2
+    <br />
+    @ViewBag.Mesaj3
+</div>
+
+<hr />
+<div class="alert alert-primary">
+    <h4>@ViewBag.Baslik2</h4>
+    <br />
+    @ViewBag.Mesaj4
+    <br />
+    @ViewBag.Mesaj5
+    <br />
+    @ViewBag.Mesaj6
+</div>
+
+<hr />
+<div class="alert alert-warning">
+    <h4>@ViewBag.Baslik3</h4>
+    <br />
+    @ViewBag.Mesaj7
+    <br />
+    @ViewBag.Mesaj8
+    <br />
+    @ViewBag.Mesaj9
+</div>
