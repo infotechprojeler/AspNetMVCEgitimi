@@ -132,6 +132,7 @@
     <Compile Include="Models\Adres.cs" />
     <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\Urun.cs" />
+    <Compile Include="Models\Uye.cs" />
     <Compile Include="Models\UyeSayfasiViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -226,6 +227,7 @@
     <Content Include="Views\MVC04ModelBinding\AdresDetay.cshtml" />
     <Content Include="Views\MVC04ModelBinding\KullaniciAdresDetay.cshtml" />
     <Content Include="Views\MVC05ModelValidation\Index.cshtml" />
+    <Content Include="Views\MVC05ModelValidation\YeniUye.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

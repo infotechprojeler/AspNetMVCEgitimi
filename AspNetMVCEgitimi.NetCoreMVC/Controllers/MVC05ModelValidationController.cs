@@ -8,5 +8,9 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
         {
             return View();
         }
+        public ActionResult YeniUye()
+        {
+            return View();
+        }
     }
 }
