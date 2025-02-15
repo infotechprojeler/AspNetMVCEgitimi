@@ -1,8 +1,5 @@
 ﻿using NetFrameworkMVC.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace NetFrameworkMVC.Controllers
@@ -63,7 +60,6 @@ namespace NetFrameworkMVC.Controllers
             ViewBag.Mesaj9 += " - rbOnay değeri : " + Request.Form.GetValues("rbOnay")[0];
             ViewBag.Mesaj9 += " -- <hr> txtUrunAdi değeri : " + Request.Form.GetValues("txtUrunAdi")[0];
             ViewBag.Mesaj9 += " -- ddlKategori değeri : " + Request.Form.GetValues("ddlKategori")[0];
-
 
             return View();
         }

@@ -1,0 +1,33 @@
+﻿@model NetFrameworkMVC.Models.Kullanici
+@{
+    ViewBag.Title = "Kullanici Detay";
+}
+
+<h2>Kullanici Detay</h2>
+
+<h3>
+    Model içerisinden gelen verileri ekranda gösterme
+</h3>
+
+<table class="table table-striped">
+    <tr>
+        <td>Ad</td>
+        <td>@Model.Ad</td>
+    </tr>
+    <tr>
+        <td>Soyad</td>
+        <td>@Model.Soyad</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <td>Kullanıcı Adı</td>
+        <td>@Model.KullaniciAdi</td>
+    </tr>
+    <tr>
+        <td>Şifre</td>
+        <td>@Model.Sifre</td>
+    </tr>
+</table>

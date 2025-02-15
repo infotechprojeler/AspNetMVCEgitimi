@@ -124,9 +124,11 @@
     <Compile Include="Controllers\MVC01RazorSyntaxController.cs" />
     <Compile Include="Controllers\MVC02HtmlHelpersController.cs" />
     <Compile Include="Controllers\MVC03DataTransferController.cs" />
+    <Compile Include="Controllers\MVC04ModelBindingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\Urun.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -216,6 +218,8 @@
     <Content Include="Views\MVC01RazorSyntax\Index.cshtml" />
     <Content Include="Views\MVC02HtmlHelpers\Index.cshtml" />
     <Content Include="Views\MVC03DataTransfer\Index.cshtml" />
+    <Content Include="Views\MVC04ModelBinding\Index.cshtml" />
+    <Content Include="Views\MVC04ModelBinding\KullaniciDetay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
