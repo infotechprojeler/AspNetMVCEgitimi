@@ -1,12 +1,11 @@
-﻿using NetFrameworkMVC.Models;
-using System.Web.Mvc;
+﻿using AspNetMVCEgitimi.NetCoreMVC.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace NetFrameworkMVC.Controllers
+namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
 {
     public class MVC04ModelBindingController : Controller
     {
-        // GET: MVC04ModelBinding
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }

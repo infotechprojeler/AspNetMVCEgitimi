@@ -1,0 +1,58 @@
+﻿@model NetFrameworkMVC.Models.UyeSayfasiViewModel
+@{
+    ViewBag.Title = "Kullanici Adres Detay";
+}
+
+<h2>Kullanici Adres Detay</h2>
+
+<h2>Kullanici Detay</h2>
+
+<h3>
+    Model içerisinden gelen verileri ekranda gösterme
+</h3>
+
+<table class="table table-striped">
+    <tr>
+        <td>Ad</td>
+        <td>@Model.Kullanici.Ad</td>
+    </tr>
+    <tr>
+        <td>Soyad</td>
+        <td>@Model.Kullanici.Soyad</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>@Model.Kullanici.Email</td>
+    </tr>
+    <tr>
+        <td>Kullanıcı Adı</td>
+        <td>@Model.Kullanici.KullaniciAdi</td>
+    </tr>
+    <tr>
+        <td>Şifre</td>
+        <td>@Model.Kullanici.Sifre</td>
+    </tr>
+</table>
+
+
+<h2>Adres Detay</h2>
+
+@{
+    if (Model != null) // Model null-boş değilse ekrana aşağıdaki verileri yazdır
+    {
+        <table class="table table-striped table-hover">
+            <tr>
+                <td>Şehir</td>
+                <td>@Model.Adres.Sehir</td>
+            </tr>
+            <tr>
+                <td>İlçe</td>
+                <td>@Model.Adres.Ilce</td>
+            </tr>
+            <tr>
+                <td>Açık Adres</td>
+                <td>@Model.Adres.AcikAdres</td>
+            </tr>
+        </table>
+    }
+}

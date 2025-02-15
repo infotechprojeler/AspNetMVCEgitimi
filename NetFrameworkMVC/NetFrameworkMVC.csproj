@@ -125,11 +125,14 @@
     <Compile Include="Controllers\MVC02HtmlHelpersController.cs" />
     <Compile Include="Controllers\MVC03DataTransferController.cs" />
     <Compile Include="Controllers\MVC04ModelBindingController.cs" />
+    <Compile Include="Controllers\MVC05ModelValidationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Adres.cs" />
     <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\Urun.cs" />
+    <Compile Include="Models\UyeSayfasiViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +223,9 @@
     <Content Include="Views\MVC03DataTransfer\Index.cshtml" />
     <Content Include="Views\MVC04ModelBinding\Index.cshtml" />
     <Content Include="Views\MVC04ModelBinding\KullaniciDetay.cshtml" />
+    <Content Include="Views\MVC04ModelBinding\AdresDetay.cshtml" />
+    <Content Include="Views\MVC04ModelBinding\KullaniciAdresDetay.cshtml" />
+    <Content Include="Views\MVC05ModelValidation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
