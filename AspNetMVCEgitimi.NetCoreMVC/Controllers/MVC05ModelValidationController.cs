@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetMVCEgitimi.NetCoreMVC.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
 {
@@ -11,6 +12,19 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
         public ActionResult YeniUye()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult YeniUye(Uye uye)
+        {
+            if (ModelState.IsValid) // Eğer modeldeki validasyon kurallarına uyulmuşsa, tersi için !ModelState.IsValid
+            {
+                // kayıt ekle
+            }
+            else
+            {
+                ModelState.AddModelError("", "Lütfen Tüm Zorunlu Alanları Doldurunuz!");
+            }
+            return View(uye);
         }
     }
 }

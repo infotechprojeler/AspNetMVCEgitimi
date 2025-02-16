@@ -1,9 +1,10 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema; // Validation işlemleri için gerekli kütüphane
+using System.ComponentModel.DataAnnotations;// Validation işlemleri için gerekli kütüphane
+using System.ComponentModel.DataAnnotations.Schema; 
 
 namespace NetFrameworkMVC.Models
 {
+    [Table(name: "Uyeler")] // Aşağıdaki uye sınıfından oluşacak olun sql tablosunun adı uyeler olsun
 	public class Uye
 	{
         public int Id { get; set; }

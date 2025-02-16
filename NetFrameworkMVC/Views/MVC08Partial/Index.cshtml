@@ -1,0 +1,26 @@
+﻿@model IEnumerable<NetFrameworkMVC.Models.Uye>
+
+@{
+    ViewBag.Title = "MVC Partial Kullanımı";
+    ViewData["CurrentMenu"] = "active";
+}
+
+<h2>MVC Partial Kullanımı</h2>
+
+<p>
+    Partial parça anlamına gelir ve kod sayısı fazlalaşan ve karmaşıklaşan uygulamalarda sayfalarımızı parçalara ayırarak yönetmemizi kolaylaştırır.
+</p>
+
+<ul class="navbar-nav">
+    @Html.Partial("_PartialMenu")
+</ul>
+
+<hr />
+
+<h3>Partial Model Kullanimi</h3>
+
+<p>
+    Datayı yolladığımızda Mvc otomatik model binding ile modeli aktarıyor
+</p>
+
+@Html.Partial("_PartialModelKullanimi")

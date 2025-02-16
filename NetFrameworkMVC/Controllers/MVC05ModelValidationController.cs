@@ -21,6 +21,14 @@ namespace NetFrameworkMVC.Controllers
         [HttpPost]
         public ActionResult YeniUye(Uye uye)
         {
+            if (ModelState.IsValid) // Eğer modeldeki validasyon kurallarına uyulmuşsa, tersi için !ModelState.IsValid
+            {
+                // kayıt ekle
+            }
+            else
+            {
+                ModelState.AddModelError("", "Lütfen Tüm Zorunlu Alanları Doldurunuz!");
+            }
             return View(uye);
         }
     }
