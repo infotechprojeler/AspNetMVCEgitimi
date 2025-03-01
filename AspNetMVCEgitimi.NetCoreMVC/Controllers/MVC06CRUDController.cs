@@ -1,20 +1,31 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AspNetMVCEgitimi.NetCoreMVC.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
 {
     public class MVC06CRUDController : Controller
     {
+        UyeContext context = new UyeContext();
         // GET: MVC06CRUDController
         public ActionResult Index()
         {
-            return View();
+            return View(context.Uyeler.ToList());
         }
 
         // GET: MVC06CRUDController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return BadRequest("Geçersiz İstek! Id Bilgisi Gereklidir!");
+            }
+            var kayit = context.Uyeler.Find(id);
+            if (kayit == null)
+            {
+                return NotFound("Id Bilgisiyle Eşleşen Bir Kayıt Bulunamadı!");
+            }
+            return View(kayit);
         }
 
         // GET: MVC06CRUDController/Create
@@ -26,58 +37,98 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
         // POST: MVC06CRUDController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Uye collection)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+                try
+                {
+                    context.Uyeler.Add(collection);
+                    context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "Hata Oluştu!");
+                }
+            }            
+            return View(collection);
         }
 
         // GET: MVC06CRUDController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return BadRequest("Geçersiz İstek! Id Bilgisi Gereklidir!");
+            }
+            var kayit = context.Uyeler.Find(id);
+            if (kayit == null)
+            {
+                return NotFound("Id Bilgisiyle Eşleşen Bir Kayıt Bulunamadı!");
+            }
+            return View(kayit);
         }
 
         // POST: MVC06CRUDController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Uye collection)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    context.Uyeler.Update(collection); // ef core da kayıt güncelleme için update metodunu kullanıyoruz
+                    context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "Hata Oluştu!");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(collection);
         }
 
         // GET: MVC06CRUDController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return BadRequest("Geçersiz İstek! Id Bilgisi Gereklidir!");
+            }
+            var kayit = context.Uyeler.Find(id);
+            if (kayit == null)
+            {
+                return NotFound("Id Bilgisiyle Eşleşen Bir Kayıt Bulunamadı!");
+            }
+            return View(kayit);
         }
 
         // POST: MVC06CRUDController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Uye collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (collection.Id == 1)
+                {
+                    return BadRequest("Admin Kullanıcısı Silinemez!");
+                }
+                else
+                {
+                    context.Uyeler.Remove(collection);
+                    context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }                
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Hata Oluştu!");
             }
+            return View(collection);
         }
     }
 }

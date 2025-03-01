@@ -1,3 +1,5 @@
+using AspNetMVCEgitimi.NetCoreMVC.Models;
+
 namespace AspNetMVCEgitimi.NetCoreMVC
 {
     public class Program
@@ -8,6 +10,8 @@ namespace AspNetMVCEgitimi.NetCoreMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<UyeContext>(); // .net core da db context i programa tanýtma
 
             var app = builder.Build();
 
