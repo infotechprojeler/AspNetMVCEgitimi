@@ -134,6 +134,7 @@
     <Compile Include="Controllers\MVC13StringFormatController.cs" />
     <Compile Include="Controllers\MVC14AppSettingController.cs" />
     <Compile Include="Controllers\MVC15FiltersUsingController.cs" />
+    <Compile Include="Controllers\MVC16HttpContextController.cs" />
     <Compile Include="Filters\UserControl.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -259,6 +260,7 @@
     <Content Include="Views\MVC15FiltersUsing\Login.cshtml" />
     <Content Include="Views\MVC15FiltersUsing\UyeGuncelle.cshtml" />
     <Content Include="Views\Shared\_KategorilerPartial.cshtml" />
+    <Content Include="Views\MVC16HttpContext\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
