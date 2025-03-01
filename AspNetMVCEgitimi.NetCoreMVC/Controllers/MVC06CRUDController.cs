@@ -1,16 +1,29 @@
 ﻿using AspNetMVCEgitimi.NetCoreMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
 {
     public class MVC06CRUDController : Controller
     {
-        UyeContext context = new UyeContext();
-        // GET: MVC06CRUDController
-        public ActionResult Index()
+        UyeContext context = new UyeContext(); // klasik yöntemle nesne örneği alma
+        private readonly UyeContext _uyeContext; // dependency injection ile nesne örneği alma
+
+        public MVC06CRUDController(UyeContext uyeContext) // üstteki _uyeContext e sağ tıklayıp ampule basıp generate constructor diyerek bu bloğu oluşturuyoruz. Kendimiz elle yazarak da oluşturabiliriz.
         {
-            return View(context.Uyeler.ToList());
+            _uyeContext = uyeContext; // yukarıda boş nesne olarak tanımlanan _uyeContext nesnesinin içini bu kurucu metot devreye girdiği anda otomatik olarak bir nesne oluşturup yukardaki boş olanı dolduruyoruz.
+        }
+
+        // GET: MVC06CRUDController
+        ////public ActionResult Index()
+        ////{
+        ////    //return View(context.Uyeler.ToList());
+        ////    return View(_uyeContext.Uyeler.ToList()); // DI ile kullanım örneği
+        ////}
+        public async Task<ActionResult> Index() // Bir metodu asenkron yapınca ActionResult ı async ile işaretleyip Task(görev) olarak tanımlıyoruz. Asenkron metotların uzantısı Async yapılıyor.
+        {
+            return View(await _uyeContext.Uyeler.ToListAsync()); // içinde asenkron işlem yapılan metotların da asenkron olması gerekir! Altı kızaran yerin üzerine gelip açılan menüden make method async e basarsak bizim için işlemi yapacaktır.
         }
 
         // GET: MVC06CRUDController/Details/5
