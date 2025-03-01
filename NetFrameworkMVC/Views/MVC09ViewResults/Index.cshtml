@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Mvc View Result Çeşitleri";
+}
+
+<h2>Mvc View Result Çeşitleri</h2>
+
+<h4>Farklı View Döndürme</h4>
+
+<a href="/MVC09ViewResults/FarkliViewDondur">Farklı View Dondur</a>
+
+<h3>
+    Redirect Result : Sayfayı bir url adresine yönlendirme için kullanılır
+</h3>
+
+<a href="/MVC09ViewResults/Yonlendir">Redirect Result</a>
+
+<h3>
+    RedirectToAction Result : Sayfayı başka bir actiona yönlendirme için kullanılır
+</h3>
+
+<a href="/MVC09ViewResults/ActionaYonlendir">RedirectToAction Result</a>
+
+<h3>
+    RedirectToRouteResult : Sayfayı başka bir route a yönlendirme için kullanılır
+</h3>
+
+<a href="/MVC09ViewResults/RouteYonlendir">RedirectToRouteResult</a>
+
+<h3>
+    PartialViewResult : Actiona gelen istek sonucu geriye bir PartialView döndürmek için kullanılır
+</h3>
+
+@Html.Partial("_KategorilerPartial")
+
+<h3>
+    Kategorileri Action ile Getir : controller daki bir action u çalıştırmak için kullanılır
+</h3>
+
+@Html.Action("KategorileriGetirPartial")
+
+<h3>
+    Kategorileri Action ile Getir : controller daki bir action model kullanarak çalıştırmak için kullanılır
+</h3>
+
+@Html.Action("PartialdaModelKullanimi")
+
+<h3>
+    JavaScriptResult : controller daki bir actiona gelen istek sonucu geriye bir javascript kodu döndürebiliriz.
+</h3>
+
+<a href="/MVC09ViewResults/JsResult">JavaScriptResult</a>
+
+<script src="/MVC09ViewResults/JsResult"></script>
+
+<h3>
+    JsonResult : controller daki bir actiona gelen istek sonucu geriye bir json türünde veri döndürebiliriz.
+</h3>
+
+<a href="/MVC09ViewResults/JsonResult">JsonResult</a>
+
+<h3>
+    ContentResult
+</h3>
+
+<a href="/MVC09ViewResults/XmlContentResult">ContentResult</a>
