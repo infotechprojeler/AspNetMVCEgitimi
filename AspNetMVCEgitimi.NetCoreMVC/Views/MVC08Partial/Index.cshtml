@@ -29,3 +29,32 @@
 @{
     Html.RenderPartial("_PartialModelKullanimi");
 }
+
+<h3>
+    Partial Tag Helper Kullanımı
+</h3>
+
+<ul class="navbar-nav">
+    <partial name="_PartialMenu" />
+</ul>
+
+<h3>Partialda Model Kullanımı</h3>
+
+<partial name="_PartialModelKullanimi" />
+
+<h3>
+    PartialAsync Kullanımı
+</h3>
+
+<ul class="navbar-nav">
+    @await Html.PartialAsync("_PartialMenu")
+</ul>
+
+<h3>Partialin Asenkron Çağrılması</h3>
+
+@await Html.PartialAsync("_PartialModelKullanimi", Model)
+
+<h3>RenderPartialAsync</h3>
+@{
+    await Html.RenderPartialAsync("_PartialModelKullanimi", Model);
+}

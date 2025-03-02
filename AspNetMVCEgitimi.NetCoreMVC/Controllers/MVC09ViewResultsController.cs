@@ -1,14 +1,12 @@
-﻿using NetFrameworkMVC.Models;
-using System.Linq;
-using System.Web.Mvc;
+﻿using AspNetMVCEgitimi.NetCoreMVC.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace NetFrameworkMVC.Controllers
+namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
 {
     public class MVC09ViewResultsController : Controller
     {
         UyeContext context = new UyeContext();
-        // GET: MVC09ViewResults
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
@@ -41,14 +39,14 @@ namespace NetFrameworkMVC.Controllers
             var kullanicilar = context.Uyeler.ToList();
             return PartialView("_PartialModelKullanimi", kullanicilar);
         }
-        public ActionResult JsResult()
-        {
-            return JavaScript("console.log('JavaScript Result')");
-        }
+        //public ActionResult JsResult() // JavaScript result .net core da kaldırıldı
+        //{
+        //    return JavaScript("console.log('JavaScript Result')");
+        //}
         public JsonResult JsonResult()
         {
             var kullanicilar = context.Uyeler.ToList();
-            return Json(kullanicilar, JsonRequestBehavior.AllowGet);
+            return Json(kullanicilar); // , JsonRequestBehavior.AllowGet
         }
         public ContentResult XmlContentResult()
         {
