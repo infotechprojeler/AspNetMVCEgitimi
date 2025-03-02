@@ -11,6 +11,8 @@ namespace AspNetMVCEgitimi.NetCoreMVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddSession(); // uygulamada session servislerini aktif et
+
             builder.Services.AddDbContext<UyeContext>(); // .net core da db context i programa tanýtma
 
             var app = builder.Build();
@@ -27,6 +29,8 @@ namespace AspNetMVCEgitimi.NetCoreMVC
             app.UseStaticFiles(); // uygulamamýz statik dosyalarý (wwwroot altýndaki js,css,resim vb) desteklesin
 
             app.UseRouting(); // uygulama routing yapýsýný kullansýn
+
+            app.UseSession(); // uygulama session kullanabilsin
 
             app.UseAuthorization(); // uygulamada yetkilendirme kullanýlabilsin
 

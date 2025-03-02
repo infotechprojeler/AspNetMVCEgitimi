@@ -1,58 +1,54 @@
-﻿using NetFrameworkMVC.Models;
-using System;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using AspNetMVCEgitimi.NetCoreMVC.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace NetFrameworkMVC.Controllers
+namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
 {
     public class MVC11CookieController : Controller
     {
         UyeContext context = new UyeContext();
-        // GET: MVC11Cookie
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult CookieOlustur(string kullaniciAdi, string sifre)
+        public IActionResult CookieOlustur(string kullaniciAdi, string sifre)
         {
             var kullanici = context.Uyeler.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
             if (kullanici != null)
             {
-                Response.Cookies.Add(new HttpCookie("userguid", Guid.NewGuid().ToString()));
-
-                var cookieAyarlari = new HttpCookie("username", "Admin")
+                var cookieAyarlari = new CookieOptions()
                 {
-                    Expires = DateTime.Now.AddMinutes(1) // oluşacak cookie yaşam geçerlilik süresi
+                    Expires = DateTime.Now.AddMinutes(1) // cookie ye 1 dk lık bitiş süresi tanımladık
                 };
-                HttpContext.Response.Cookies.Add(cookieAyarlari);
-                TempData["Mesaj"] = @"<div class='alert alert-success'>Giriş Başarılı!</div>";
+                Response.Cookies.Append("username", kullaniciAdi, cookieAyarlari);
+                Response.Cookies.Append("sifre", sifre, cookieAyarlari);
+                Response.Cookies.Append("userguid", Guid.NewGuid().ToString());
+                return RedirectToAction("CookieOku");
             }
             else
                 TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
             return RedirectToAction("Index");
         }
-        public ActionResult CookieOku()
+        public IActionResult CookieOku()
         {
             if (HttpContext.Request.Cookies["username"] == null || HttpContext.Request.Cookies["userguid"] == null)
             {
                 TempData["Mesaj"] = @"<div class='alert alert-danger'>Lütfen Giriş Yapınız!</div>";
                 return RedirectToAction("Index");
             }
-            TempData["kullaniciAdi"] = HttpContext.Request.Cookies["username"].Value;
-            TempData["kullaniciguid"] = HttpContext.Request.Cookies["userguid"].Value;
+            TempData["kullaniciAdi"] = HttpContext.Request.Cookies["username"];
+            TempData["kullaniciguid"] = HttpContext.Request.Cookies["userguid"];
             return View();
         }
         public ActionResult CookieSil()
         {
             if (HttpContext.Request.Cookies["username"] != null)
             {
-                HttpContext.Response.Cookies["username"].Expires = DateTime.Now.AddSeconds(-1);
+                Response.Cookies.Delete("username");
             }
             if (HttpContext.Request.Cookies["userguid"] != null)
             {
-                HttpContext.Response.Cookies["userguid"].Expires = DateTime.Now.AddSeconds(-1);
+                Response.Cookies.Delete("userguid");
             }
             TempData["Mesaj"] = @"<div class='alert alert-danger'>Oturumuz Sonlandırıldı!</div>";
             return RedirectToAction("Index");

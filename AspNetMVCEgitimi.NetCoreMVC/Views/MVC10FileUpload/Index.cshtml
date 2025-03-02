@@ -39,7 +39,7 @@
         <th>Dosya Boyutu</th>
         <th>Sil</th>
     </tr>
-    @foreach (var item in infoList)
+    @foreach (var item in infoList.OrderByDescending(x => x.CreationTime))
     {
         <tr>
             <td>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
 {
@@ -23,7 +24,29 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
                 }
                 if (uzanti == ".jpg" ||uzanti == ".jpeg" ||uzanti == ".png" ||uzanti == ".gif" ||uzanti == ".webp")
                 {
+                    // 1. Yöntem Random(Rastgele) İsimle Dosya Yükleme
+                    /*
+                    var randomFileName = Path.GetRandomFileName(); // rasgele dosya ismi oluşturma metodu
+                    var fileName = Path.ChangeExtension(randomFileName, ".jpg"); // dosya adı ve uzantısını değiştirip birleştirdik
+                    var path = Path.Combine(klasor, fileName); // klasör ve resim adını birleştirdik
+                    using var stream = new FileStream(path, FileMode.Create);
+                    dosya.CopyTo(stream); // resmi asenkron olarak yükledik
+                    TempData["Resim"] = dosya.FileName;
+                    */
 
+                    // 2. Yöntem - Resmi Kendi Adıyla Yükleme
+                    /*
+                    var dosyaAdi = Path.GetFileName(dosya.FileName);
+                    var yol = Path.Combine(klasor, dosyaAdi);
+                    using var stream = new FileStream(yol, FileMode.Create);
+                    dosya.CopyTo(stream); // resmi asenkron olarak yükledik
+                    TempData["Resim"] = dosya.FileName;
+                    */
+
+                    // 3. Yönetem - Resmi direk sunucuya yollama
+                    using var stream = new FileStream(klasor + dosya.FileName, FileMode.Create); // Buradaki using ifadesi stream isimli değişkenin işinin bittikten sonra bellekten atılmasını sağlar
+                    dosya.CopyTo(stream); // resmi asenkron olarak yükledik
+                    TempData["Resim"] = dosya.FileName;
                 }
                 else
                     TempData["Message"] = " Sadece .jpg, .jpeg, png, gif, webp dosyaları yükleyebilirsiniz!";

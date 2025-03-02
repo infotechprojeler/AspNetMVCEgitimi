@@ -41,7 +41,7 @@ namespace NetFrameworkMVC.Controllers
                     //dosya.SaveAs(yol);
                     //TempData["Resim"] = dosyaAdi;
                     
-                    // 3. Yönetm - Resmi direk sunucuya yollama
+                    // 3. Yönetem - Resmi direk sunucuya yollama
                     dosya.SaveAs(Server.MapPath("/Images/" + dosya.FileName));
                     TempData["Resim"] = dosya.FileName;
 

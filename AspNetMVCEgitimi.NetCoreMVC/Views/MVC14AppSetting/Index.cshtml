@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Config Dosyasından Değer Okuma";
+}
+
+<h2>Config Dosyasından Değer Okuma</h2>
+
+<p>
+    Mvc ile web config dosyasına yazacağımız özel verilere erişip uygulama içerisinde kullanabiliriz.
+</p>
+
+<p class="alert alert-info">
+    <b>Mailin Gidecegi Adres:</b> @ViewData["Email"]
+</p>
+
+<p class="alert alert-danger">
+    <b>Mail Kullanici Adi:</b> @ViewData["KullaniciAdi"]
+</p>
+
+<p class="alert alert-primary">
+    <b>Mail Şifre:</b> @ViewData["Sifre"]
+</p>
