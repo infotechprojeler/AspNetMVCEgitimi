@@ -1,9 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace NetFrameworkMVC.Filters
+namespace AspNetMVCEgitimi.NetCoreMVC.Filters
 {
-	public class UserControl : ActionFilterAttribute
-	{
+    public class UserControl : ActionFilterAttribute
+    {
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             // bir action çalıştırılacağı zaman kontrol yapmamızı sağlar
@@ -12,9 +13,8 @@ namespace NetFrameworkMVC.Filters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var userguid = filterContext.HttpContext.Request.Cookies["userguid"];
-            if (userguid == null)
-                filterContext.Result = new RedirectResult("/MVC11Cookie?msg=AccessDenied");
-            var UserGuid = filterContext.HttpContext.Session["UserGuid"];
+            
+            var UserGuid = filterContext.HttpContext.Session.GetString("UserGuid"); //["userguid"];
             if (UserGuid == null)
                 filterContext.Result = new RedirectResult("/MVC12Session?msg=AccessDenied");
             base.OnActionExecuting(filterContext);
