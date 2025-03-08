@@ -12,9 +12,8 @@ namespace NetFrameworkMVC.Filters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var userguid = filterContext.HttpContext.Request.Cookies["userguid"];
-            if (userguid == null)
-                filterContext.Result = new RedirectResult("/MVC11Cookie?msg=AccessDenied");
-            var UserGuid = filterContext.HttpContext.Session["UserGuid"];
+            
+            var UserGuid = filterContext.HttpContext.Session["userguid"];
             if (UserGuid == null)
                 filterContext.Result = new RedirectResult("/MVC12Session?msg=AccessDenied");
             base.OnActionExecuting(filterContext);

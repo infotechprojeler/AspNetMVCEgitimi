@@ -1,4 +1,5 @@
 using AspNetMVCEgitimi.NetCoreMVC.Models;
+using Microsoft.AspNetCore.Authentication.Cookies; // oturum açma kütüphanesi
 
 namespace AspNetMVCEgitimi.NetCoreMVC
 {
@@ -14,6 +15,12 @@ namespace AspNetMVCEgitimi.NetCoreMVC
             builder.Services.AddSession(); // uygulamada session servislerini aktif et
 
             builder.Services.AddDbContext<UyeContext>(); // .net core da db context i programa tanýtma
+
+            // Uygulamada Authentication servisini kullan:
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+            {
+                x.LoginPath = "/MVC15FiltersUsing/Login"; // Admin oturum acma sayfamýzý belirttik
+            });
 
             var app = builder.Build();
 
@@ -33,6 +40,12 @@ namespace AspNetMVCEgitimi.NetCoreMVC
             app.UseSession(); // uygulama session kullanabilsin
 
             app.UseAuthorization(); // uygulamada yetkilendirme kullanýlabilsin
+
+            // Uygulamaya area ekledikten sonra aþaðýdaki route ayarýný ekliyoruz.
+            app.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Main}/{action=Index}/{id?}"
+                );
 
             app.MapControllerRoute( // kullanýlacak routing yapýsý ayarlarý
                 name: "default",

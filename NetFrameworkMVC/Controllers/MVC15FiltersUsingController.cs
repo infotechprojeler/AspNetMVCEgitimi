@@ -13,14 +13,14 @@ namespace NetFrameworkMVC.Controllers
         UyeContext context = new UyeContext();
         // GET: MVC15FiltersUsing
         public ActionResult Index()
-        {
-            ViewBag.Kullanici = HttpContext.Session["userguid"];
+        {            
             return View();
         }
         [UserControl] // aşağıdaki action çalışırken UserControl içindeki kontrolleri yap
         public ActionResult FiltreKullanimi()
         {
-            return View("Index");
+            ViewBag.Kullanici = HttpContext.Session["userguid"];
+            return View();
         }
         [Authorize] // .net içerisinde yer alan güvenlik filtresi
         public ActionResult UyeGuncelle(int? id)
