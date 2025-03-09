@@ -22,6 +22,67 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AspNetMVCEgitimi.NetCoreMVC.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("AspNetMVCEgitimi.NetCoreMVC.Models.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Posts");
+                });
+
             modelBuilder.Entity("AspNetMVCEgitimi.NetCoreMVC.Models.Uye", b =>
                 {
                     b.Property<int>("Id")
@@ -35,7 +96,7 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime>("DogumTarihi")
+                    b.Property<DateTime?>("DogumTarihi")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -44,7 +105,6 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("KullaniciAdi")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -54,7 +114,6 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("SifreTekrar")
-                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -64,12 +123,10 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("TcKimlikNo")
-                        .IsRequired()
                         .HasMaxLength(11)
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Telefon")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
@@ -82,15 +139,29 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Migrations
                         {
                             Id = 1,
                             Ad = "Admin",
-                            DogumTarihi = new DateTime(2025, 3, 1, 11, 50, 42, 332, DateTimeKind.Local).AddTicks(414),
+                            DogumTarihi = new DateTime(2025, 3, 9, 13, 59, 17, 900, DateTimeKind.Local).AddTicks(8658),
                             Email = "admin@admin.com",
                             KullaniciAdi = "admin",
                             Sifre = "123",
                             SifreTekrar = "123",
                             Soyad = "User",
                             TcKimlikNo = "12345678901",
-                            Telefon = "12345678901"
+                            Telefon = "1234567890"
                         });
+                });
+
+            modelBuilder.Entity("AspNetMVCEgitimi.NetCoreMVC.Models.Post", b =>
+                {
+                    b.HasOne("AspNetMVCEgitimi.NetCoreMVC.Models.Category", "Category")
+                        .WithMany("Posts")
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("AspNetMVCEgitimi.NetCoreMVC.Models.Category", b =>
+                {
+                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,11 +4,17 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Models
 {
     public class UyeContext : DbContext
     {
+        public UyeContext()
+        {
+            Database.Migrate();
+        }
         public DbSet<Uye> Uyeler { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // OnConfiguring metodu .net core da veritabanı ayarlarını yapılandırabildiğimiz metottur.
         {
-            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB; database=UyeDatabase; integrated security=True; trustservercertificate=True;"); // optionsBuilder üzerinden veritabanı olarak UseSqlServer diyerek sql server kullanacağımızı belirttik. UseSqlServer metoduna string tırnaklarıyla sql connection stringini gönderebiliriz.
+            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB; database=BlogSitesi; integrated security=True; trustservercertificate=True;"); // optionsBuilder üzerinden veritabanı olarak UseSqlServer diyerek sql server kullanacağımızı belirttik. UseSqlServer metoduna string tırnaklarıyla sql connection stringini gönderebiliriz.
             base.OnConfiguring(optionsBuilder);
         }
         // Visual studioda PMC-package manager console ekranını açmak için üst menüden Tools > Nuget package manager > package manager console a tıklayarak aşağıda komut yazım bölümünü aktif edebiliriz.

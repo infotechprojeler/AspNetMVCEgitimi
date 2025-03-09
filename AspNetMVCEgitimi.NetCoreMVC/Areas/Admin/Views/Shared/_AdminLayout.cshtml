@@ -27,9 +27,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="Uyeler" asp-action="Index">Üye Yönetimi</a>
                         </li>
-                        
+
                     </ul>
                 </div>
+                @if (Context.User.Identity.IsAuthenticated)
+                {
+                    <a class="btn btn-danger" asp-area="" asp-controller="MVC15FiltersUsing" asp-action="Logout">Oturumu Kapat</a>
+                }
+                else
+                {
+                    <a class="btn btn-danger" asp-area="" asp-controller="MVC15FiltersUsing" asp-action="Login">Giriş Yap</a>
+                }
             </div>
         </nav>
     </header>

@@ -47,6 +47,15 @@
                         @Html.Partial("_PartialMenu")
                     </ul>
                 </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="/Admin" class="btn btn-outline-dark">Yönetim Paneline Git</a>
+                    <a href="/MVC15FiltersUsing/Logout" class="btn btn-outline-danger ms-2">Oturumu Kapat</a>
+                }
+                else
+                {
+                    <a href="/MVC15FiltersUsing/Login" class="btn btn-outline-primary">Üye Giriş</a>
+                }
             </div>
         </nav>
     </header>

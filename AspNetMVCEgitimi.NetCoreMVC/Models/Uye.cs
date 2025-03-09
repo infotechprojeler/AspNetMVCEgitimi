@@ -26,7 +26,7 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Models
         public string? TcKimlikNo { get; set; }
         [Display(Name = "Şifreyi Tekrar Giriniz!"), StringLength(15, ErrorMessage = "{0} {2} Karakterden Az Olamaz!", MinimumLength = 5)]
         public string? SifreTekrar { get; set; }
-        [Display(Name = "Doğum Tarihi")]
-        public DateTime DogumTarihi { get; set; }
+        [Display(Name = "Doğum Tarihi"), DataType(DataType.Date)]
+        public DateTime? DogumTarihi { get; set; }
     }
 }

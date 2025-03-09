@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AspNetMVCEgitimi.NetCoreMVC.Models.Uye>
+﻿@model IEnumerable<Uye>
 
 @{
     ViewData["Title"] = "Üye Listesi";
@@ -47,7 +47,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr @(ViewBag.Secili==@item.Id.ToString() ? "class=bg-warning" : "" )>
                 <td>
                     @Html.DisplayFor(modelItem => item.Ad)
                 </td>
@@ -73,13 +73,13 @@
                     @Html.DisplayFor(modelItem => item.DogumTarihi)
                 </td>
                 <td>
-                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.Id">
+                    <a class="btn btn-sm btn-primary" asp-controller="MVC06CRUD" asp-action="Edit" asp-route-id="@item.Id">
                         <i class="bi bi-pencil"></i> Düzenle
                     </a> |
-                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">
+                    <a class="btn btn-sm btn-info" asp-controller="MVC06CRUD" asp-action="Details" asp-route-id="@item.Id">
                         <i class="bi bi-arrow-right"></i> Detay
                     </a> |
-                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">
+                    <a class="btn btn-sm btn-danger" asp-controller="MVC06CRUD" asp-action="Delete" asp-route-id="@item.Id">
                         <i class="bi bi-trash"></i> Sil
                     </a>
                 </td>
@@ -87,3 +87,5 @@
         }
     </tbody>
 </table>
+
+@ViewBag.Secili

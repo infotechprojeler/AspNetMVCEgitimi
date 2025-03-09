@@ -75,7 +75,7 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
                     ClaimsPrincipal claimsPrincipal = new(kullaniciKimligi); // üstte tanımladığımız kullaniciKimligi nesnesindeki bilgilerle yetki prensipleri-kuralları gibi bir nesne daha oluşturuyoruz.
                     // Adım 4
                     await HttpContext.SignInAsync(claimsPrincipal); // yukardaki yetkilerle sisteme giriş yaptık
-                    return RedirectToAction("UyeGuncelle");
+                    return RedirectToAction("Index");
                 }
                 else
                 {
@@ -88,7 +88,7 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Controllers
             }
             return View(uye);
         }
-        [HttpPost]
+        
         public async Task<ActionResult> LogoutAsync()
         {
             //FormsAuthentication.SignOut(); // .net core da çalışmıyor

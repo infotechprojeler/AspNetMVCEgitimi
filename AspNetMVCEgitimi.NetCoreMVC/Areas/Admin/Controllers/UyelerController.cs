@@ -1,11 +1,11 @@
 ﻿using AspNetMVCEgitimi.NetCoreMVC.Models;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetMVCEgitimi.NetCoreMVC.Areas.Admin.Controllers
 {
-    [Area("admin")]
+    [Area("Admin"), Authorize] // Authorize özelliği bu controller daki tüm action ları korumaya alır ve oturum açmayan kişileri logine yönlendirir.
     public class UyelerController : Controller
     {
         private readonly UyeContext _context; // _context e sağ klik > ampüle tıkla > açılan menüden generate constructor a tıkla
@@ -20,6 +20,12 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Areas.Admin.Controllers
         {
             var model = _context.Uyeler;
             return View(model);
+        }
+
+        public ActionResult Search(string filtre = "")
+        {
+            var model = _context.Uyeler.Where(u => u.Ad.Contains(filtre) || u.Soyad.Contains(filtre));
+            return View("Index", model);
         }
 
         // GET: UyelerController/Details/5
