@@ -1,6 +1,7 @@
 ﻿using AspNetMVCEgitimi.NetCoreMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetMVCEgitimi.NetCoreMVC.Areas.Admin.Controllers
 {
@@ -53,6 +54,37 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Areas.Admin.Controllers
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
+                catch (Exception hata) // (Exception hata) ile oluşan hatayı yakalarız.
+                {
+                    ModelState.AddModelError("", "Hata Oluştu! " + hata.InnerException);
+                }
+            }
+            return View(collection);
+        }
+
+        // GET: UyelerController/Edit/5
+        public async Task<ActionResult> EditAsync(int id)
+        {
+            //var model = _context.Uyeler.Find(id);
+            // var model = _context.Uyeler.FirstOrDefault(x => x.Id == id);
+            var model = await _context.Uyeler.FirstOrDefaultAsync(x => x.Id == id);
+
+            return View(model);
+        }
+
+        // POST: UyelerController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditAsync(int id, Uye collection)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Uyeler.Update(collection); // ef de Update metodunun asenkron versiyonu yok!
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
                 catch
                 {
                     ModelState.AddModelError("", "Hata Oluştu!");
@@ -61,43 +93,22 @@ namespace AspNetMVCEgitimi.NetCoreMVC.Areas.Admin.Controllers
             return View(collection);
         }
 
-        // GET: UyelerController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            //var model = _context.Uyeler.Find(id);
-            var model = _context.Uyeler.FirstOrDefault(x => x.Id == id);
-
-            return View(model);
-        }
-
-        // POST: UyelerController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         // GET: UyelerController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> DeleteAsync(int id)
         {
-            return View();
+            var model = await _context.Uyeler.FindAsync(id);
+            return View(model);
         }
 
         // POST: UyelerController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> DeleteAsync(int id, Uye collection)
         {
             try
             {
+                _context.Uyeler.Remove(collection); // Remove metodunun async versiyonu yok
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
